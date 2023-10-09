@@ -22,23 +22,20 @@ const navItems = [
 
 export default function Navbar() {
 
-    const [activeIndex, setActiveIndex] = useState("Home")
-    const [dropNav, setDropNav] = useState(false)
+    const [activeIndex, setActiveIndex] = useState("Inicio")
+
     const handleActiveIndex = (e) => {
         setActiveIndex(e)
     }
-    const handleDropNav = () => {
-        dropNav ? setDropNav(false) : setDropNav(true)
-    }
+
 
 
     return (
-        <header className={`w-full  text-customWhite ${dropNav ? "h-24 bg-primary" : "h-12 bg-primary50 "} py-4 flex items-center justify-center shadow-lg fixed duration-150 z-50`}
-            onMouseEnter={handleDropNav} onMouseLeave={handleDropNav}
-        >
+        <header className="w-[100vw] bg-primary10 backdrop-blur-xl text-customWhite h-14 py-4 flex items-center justify-center shadow-md box text-sm font-light  px-8 duration-150 z-50 rounded-b-lg"
 
-            <nav className="w-[90%] md:w-[80%] flex justify-between items-center">
-                <div className={`${dropNav ? "h-20" : "h-10"} duration-150`}>
+        >
+            <nav className="w-[90%] md:w-[100%] flex justify-between items-center uppercase">
+                <div className="h-10 duration-150">
                     <Link role="button" to="Inicio" smooth={true}>
                         <img className="h-full" src="./NG_LOGOW.png" alt="logo" />
                     </Link>
