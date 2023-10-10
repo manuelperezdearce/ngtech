@@ -1,63 +1,48 @@
 'use client'
+
 import { useState } from "react"
+
 import { Link } from "react-scroll"
+import NavUtilitieslNormal from "./components/NavUtilitiesNormal"
+import NavUtilitieslBurger from "./components/NavUtilitiesBurger"
 const navItems = [
     {
         id: '0',
-        name: 'Home'
+        name: 'Inicio'
     },
     {
         id: '1',
-        name: 'Services'
+        name: 'Servicios'
     },
     {
         id: '2',
-        name: 'About'
+        name: 'Nosotros'
     }
 ]
 
 export default function Navbar() {
 
-    const [activeIndex, setActiveIndex] = useState("Home")
+    const [activeIndex, setActiveIndex] = useState("Inicio")
 
     const handleActiveIndex = (e) => {
         setActiveIndex(e)
     }
 
+
+
     return (
-        <header className="bg-primary text-customWhite h-28 py-4 flex items-center justify-center shadow-lg fixed w-full">
+        <header className="w-[100vw] bg-primary10 backdrop-blur-xl text-customWhite h-14 py-4 flex items-center justify-center shadow-md box text-sm font-light fixed  px-8 duration-150 z-50 rounded-b-lg"
 
-            <nav className="w-[80%] flex justify-between items-center">
-                <div className="w-[100px]">
-                    <Link to="Home" smooth={true}>
-                        <img src="./NG_LOGOW.png" alt="logo" />
+        >
+            <nav className="w-[90%] md:w-[100%] flex justify-between items-center uppercase">
+                <div className="h-10 duration-150">
+                    <Link role="button" to="Inicio" smooth={true}>
+                        <img className="h-full" src="./NG_LOGOW.png" alt="logo" />
                     </Link>
-
                 </div>
-                <ul className="flex gap-4  justify-end">
-                    {
-                        navItems.map(item => {
-                            return (
-                                <li className="flex flex-col" role="button" key={item.id}>
-                                    <Link
-
-                                        name={item.id}
-                                        onSetActive={handleActiveIndex}
-                                        onClick={handleActiveIndex}
-                                        to={item.name}
-                                        smooth={true}
-                                        spy={true}
-
-                                    >
-                                        {item.name}
-                                    </Link>
-                                    <span className={`${activeIndex === item.name && "bg-customWhite"} h-1 rounded-lg transition ease-in`} />
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                <NavUtilitieslNormal className="hidden sm:block" navItems={navItems} handleActiveIndex={handleActiveIndex} activeIndex={activeIndex} />
+                <NavUtilitieslBurger className="block sm:hidden" navItems={navItems} handleActiveIndex={handleActiveIndex} activeIndex={activeIndex} />
             </nav>
-        </header>
+        </header >
     )
 }
